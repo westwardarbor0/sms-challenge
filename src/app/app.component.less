@@ -1,0 +1,45 @@
+@import "../vars.less";
+
+
+
+.main-header{
+    background: @mainColor;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    .main-header-nav{
+        margin: 8px auto;
+        display: block;
+        width: 465px;
+    }
+    z-index: 9999;
+}
+
+.main-container{
+    float: left;
+    width: 100%;
+    height: ~"calc(100% - 50px)";
+    margin-top: 50px;
+    overflow: auto;
+    .main-default-content{
+        margin: 10% auto;
+        width: 400px;
+        height: 300px;
+        padding: 15px;
+        box-shadow: 0 0 10px #00000042;
+        background: white;
+        .main-welcome-text,.main-about-text{
+            float: left;
+            width: 100%;
+            color: @mainColor;
+            font-size: 40px;
+            text-align: center;
+        }
+        .main-about-text{
+            font-size: 20px;
+            margin-top: 100px;
+        }
+    }
+}

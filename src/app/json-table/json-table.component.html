@@ -1,0 +1,46 @@
+<div class="jsonTable-date-filter">
+  <div class="jsonTable-date-filter-wrapper">
+  <mat-form-field class="jsonTable-date-from">
+    <input matInput [(ngModel)]="filterDateFrom" [matDatepicker]="pickerFrom" placeholder="Choose start date">
+    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+    <mat-datepicker #pickerFrom></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="jsonTable-date-to">
+    <input matInput [(ngModel)]="filterDateTo" [matDatepicker]="pickerTo " placeholder="Choose end date">
+    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+    <mat-datepicker #pickerTo></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button type="button" class="jsonTable-date-startFilter" (click)="filterTable()">
+      <mat-icon>schedule</mat-icon>
+      <span>Filter</span>
+  </button>
+  <button mat-icon-button type="button" class="jsonTable-date-clearFilter" *ngIf="activeFilter" (click)="unfilterTable()">
+      <mat-icon>clear</mat-icon>
+  </button>
+</div>
+</div>
+<div class="jsonTable-data-container">
+  <table matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="city">City</th>
+      <th mat-sort-header="start_date">Start date</th>
+      <th mat-sort-header="end_date">End date</th>
+      <th mat-sort-header="price">Price</th>
+      <th mat-sort-header="status">Status</th>
+      <th mat-sort-header="color">Color</th>
+    </tr>
+
+    <tr *ngFor="let city of jsonData">
+      <td>{{city.city}}</td>
+      <td>{{city.start_date}}</td>
+      <td>{{city.end_date}}</td>
+      <td>{{city.price}}</td>
+      <td>{{city.status}}</td>
+      <td>{{city.color}}</td>
+    </tr>
+  </table>
+</div>
+<button mat-raised-button type="button" class="jsonTable-nav-loadmore" *ngIf="isNextPage() && !activeFilter" (click)="addJsonPage()">
+  <mat-icon>cached</mat-icon>
+  <span>Load more...</span>
+</button>
